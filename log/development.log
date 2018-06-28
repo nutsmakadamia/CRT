@@ -113,3 +113,100 @@ puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
 puma (3.11.4) lib/puma/server.rb:446:in `process_client'
 puma (3.11.4) lib/puma/server.rb:306:in `block in run'
 puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/posts/new" for 127.0.0.1 at 2018-06-29 03:00:43 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 467ms (Views: 457.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-06-29 03:02:33 +0900
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (61.7ms)
+Completed 200 OK in 427ms (Views: 413.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-06-29 03:02:41 +0900
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"g7kxmuICfyPfNLnUtxiPzHDq6C93Vd6lnsHDyhC7P6ITmDXhXBPJT1agwgSFuihOVoAxgp3RLevFdtsG4OrIzQ==", "post"=>{"title"=>"a", "text"=>"a"}, "commit"=>"Save Post"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (7.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "a"], ["text", "a"], ["created_at", "2018-06-28 18:02:41.886341"], ["updated_at", "2018-06-28 18:02:41.886341"]]
+  [1m[35m (29.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://0.0.0.0:3000/posts/2
+Completed 302 Found in 89ms (ActiveRecord: 39.4ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2018-06-29 03:02:42 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (30.4ms)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    1: <p>
+    2:   <strong>タイトル：</strong>
+    3:   <%= @post.title %>
+    4: </p>
+    5: 
+    6: <p>
+  
+app/views/posts/show.html.erb:3:in `_app_views_posts_show_html_erb__3813223176203478128_70090075321020'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/posts/2" for 127.0.0.1 at 2018-06-29 03:18:29 +0900
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 391ms (Views: 299.4ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-06-29 03:18:36 +0900
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"g7kxmuICfyPfNLnUtxiPzHDq6C93Vd6lnsHDyhC7P6ITmDXhXBPJT1agwgSFuihOVoAxgp3RLevFdtsG4OrIzQ==", "post"=>{"title"=>"a", "text"=>"a"}, "commit"=>"Save Post"}
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (10.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "a"], ["text", "a"], ["created_at", "2018-06-28 18:18:37.017723"], ["updated_at", "2018-06-28 18:18:37.017723"]]
+  [1m[35m (36.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://0.0.0.0:3000/posts/3
+Completed 302 Found in 111ms (ActiveRecord: 48.2ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2018-06-29 03:18:37 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (3.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 101ms (Views: 81.6ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-06-29 03:18:51 +0900
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"g7kxmuICfyPfNLnUtxiPzHDq6C93Vd6lnsHDyhC7P6ITmDXhXBPJT1agwgSFuihOVoAxgp3RLevFdtsG4OrIzQ==", "post"=>{"title"=>"c", "text"=>"c"}, "commit"=>"Save Post"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (12.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "c"], ["text", "c"], ["created_at", "2018-06-28 18:18:51.425479"], ["updated_at", "2018-06-28 18:18:51.425479"]]
+  [1m[35m (53.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://0.0.0.0:3000/posts/4
+Completed 302 Found in 109ms (ActiveRecord: 66.9ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-06-29 03:18:51 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 124ms (Views: 112.5ms | ActiveRecord: 0.7ms)
+
+
